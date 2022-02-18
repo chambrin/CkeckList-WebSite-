@@ -1,0 +1,731 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CkeckList WebSite </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6e15b817-e875-4cc5-98d3-accb9fe5da18" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✅</span></div><h1 class="page-title">CkeckList WebSite </h1></header><div class="page-body"><p id="60ecb079-89a2-4601-a3e1-83ba8c31b597" class="">Assurance qualité Web
+La checklist de référence
+Règles 2020 – Version : 4.0</p><p id="4b89d950-6f0a-4c67-95c3-5466f97f199f" class="">
+</p><h1 id="a6cbaae9-5545-428d-bb9f-3b93505e7012" class="">1. Contenus</h1><ul id="42425cda-e4a2-4823-b0b6-2d2b70c7f63c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">1 Le site fournit aux utilisateurs la possibilité de connaître les nouveaux contenus ou
+services.</span></li></ul><ul id="3e38d25c-741c-44db-9238-6a18441edf91" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">2 Les informations relatives aux droits de copie et de réutilisation sont disponibles depuis
+toutes les pages.</span></li></ul><ul id="854854c8-897d-4ad9-b680-a4df88ccc1a2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">3 Le code source de chaque page contient une métadonnée qui en décrit le contenu.</span></li></ul><ul id="3465cbf6-15a2-483a-ae15-251e4a997190" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">4 Les dates sont présentées dans des formats explicites.</span></li></ul><ul id="131808e7-29a7-47e0-8513-b46097fd4bba" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">5 La première occurrence d&#x27;une abréviation ou d&#x27;un acronyme dans le corps de chaque
+page donne accès à sa signification.</span></li></ul><ul id="ea4a51b9-556a-4d65-adf9-5e2a7e1a57a4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">6 La date de publication des contenus qui le nécessitent est indiquée</span></li></ul><ul id="0e1bb374-f0f6-4078-b753-fd235ecbe843" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">7 Un lexique ou un glossaire adapté au public visé explique le vocabulaire sectoriel ou
+technique.</span></li></ul><ul id="a49cbc44-9b8b-4405-8ac2-12ba04f18634" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">8 Les contenus publicitaires ou sponsorisés sont identifiés comme tels.</span></li></ul><ul id="cb7b4e3d-fa48-4df1-82b1-fda39608a911" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">9 Les conditions de modération des espaces publics sont indiquées.</span></li></ul><ul id="8a8443d4-eab3-4893-b5dc-70da485801ac" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">10 Les contenus ou fichiers destinés à des espaces publics peuvent être vérifiés avant leur
+envoi définitif.</span></li></ul><ul id="2c02447e-6d1d-42dd-9fef-a7d9969a354c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">11 Les espaces publics proposent au moins un moyen de signaler les abus.</span></li></ul><ul id="07e014dc-6425-49f0-8f3a-15224e433adc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">12 Chaque graphique est accompagné de ses données numériques.</span></li></ul><ul id="3bfa9ac5-145d-46ca-9d33-bc831327d289" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">13 La page des résultats de recherche indique le nombre de résultats, le nombre de pages
+de résultats, et le nombre de résultats par page.</span></li></ul><h1 id="d34f007b-e3d2-43d2-bbf3-611d1de9b35c" class="">2.Données personnelles</h1><ul id="1371a327-f1d5-4edf-a92a-629f01edeffd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">14 La politique de confidentialité et de respect de la vie privée est disponible depuis toutes
+les pages.</span></li></ul><ul id="5bbf8f32-387f-4c57-98d8-f828d240d08c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">15 La procédure d&#x27;accès et de rectification des données personnelles est décrite.</span></li></ul><ul id="a0def1f1-4803-4ea5-90ea-412f301b8629" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">16 La création de compte est possible sans recours à un système d&#x27;identification tiers.</span></li></ul><ul id="4512f0d5-60b3-4c37-82d2-d2a90c91da79" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">17 La création d&#x27;un compte est soumise à un processus de confirmation.</span></li></ul><ul id="739da052-e41d-4e6e-b7a2-221ab5d425ac" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">18 Le site propose un mécanisme de prévention des usurpations de compte ou d&#x27;identité.</span></li></ul><ul id="899ac18e-5b92-48ed-8dcc-595075cbb41b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">19 Les comptes ou abonnements ouverts en ligne peuvent être fermés par le même moyen.</span></li></ul><ul id="6e609c04-34ce-4930-9180-d5fce6db1190" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">20 Si le site propose un espace personnel ou abonné, il est possible de sauvegarder les
+contenus personnels.</span></li></ul><ul id="3a87edb5-49e0-421d-840a-3836953c4a15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">21 La connexion à tous les services proposés est possible avec les mêmes identifiants</span></li></ul><ul id="7851d1fa-8fb6-48b2-8748-e9fbe8516582" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">22 Il est possible de se déconnecter des espaces privés.</span></li></ul><ul id="a692d73a-3fcb-4822-86fa-15e726d46df1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">23 Le site accepte les alias mail contenant le signe +</span></li></ul><ul id="f7111e58-7ec4-449e-9f40-4b91f8f606db" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">24 Les en-têtes envoyés par le serveur spécifient la politique de communication des
+referrers</span></li></ul><ul id="02cbfb09-546f-4fdd-86de-403d8b6ade75" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">25 Les liens externes qui ouvrent une nouvelle fenêtre ne partagent pas d&#x27;information de
+contexte</span></li></ul><ul id="3edccc56-3848-4d02-85db-5e74d958c78a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">26 Les échanges de données sensibles sont sécurisés et signalés comme tels.</span></li></ul><ul id="e83b2278-44dd-4e92-bcf4-4b507eeaf961" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">27 Les données sensibles ne sont pas transmises en clair dans les url</span></li></ul><ul id="7d760dc2-fa92-4af3-859d-9850cb54a5f1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">28 L&#x27;objectif des cookies et les limitations inhérentes à leur refus sont expliqués.</span></li></ul><ul id="57df9241-9ae8-4251-a15f-ddd119e4b8bd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">29 L&#x27;achat d&#x27;un produit ou service est possible sans création de compte.</span></li></ul><ul id="4600f889-3ff5-4a5e-b491-10b456dbf498" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">30 Le détail de chaque article est consultable depuis le panier</span></li></ul><ul id="5b4c667e-f7c0-4c32-8c03-5bdec9039062" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">31 Aucun produit ni service annexe n&#x27;est ajouté au panier de commande sans que cette
+action soit déclenchée par l&#x27;utilisateur.</span></li></ul><ul id="fe136f3c-aa4b-4bef-a929-5f80e12415cc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">32 L&#x27;inscription à des services annexes n&#x27;est pas activée par défaut</span></li></ul><ul id="27ab612e-a543-4559-8e8a-ba88de52159a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">33 La disponibilité des produits est indiquée avant la validation définitive de la commande.</span></li></ul><ul id="8800652b-ebfb-49d2-a3b9-733782e7aa86" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">34 Le délai de livraison estimé est indiqué avant la validation définitive de la commande.</span></li></ul><ul id="80b528fa-b3e4-4e10-8ef1-28c6704bd594" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">35 Les frais de livraison estimés sont indiqués avant la validation définitive de la
+commande.</span></li></ul><ul id="48adc31a-c019-4c75-a922-275d0b7ae7d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">36 Les modalités de récupération d&#x27;un bien dématérialisé sont précisées avant la
+commande.</span></li></ul><ul id="5ea409ae-d2c9-4063-9659-364b0ab1e694" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">37 La modification de la quantité de chaque article, l&#x27;ajout et la suppression d&#x27;un ou
+plusieurs articles restent possibles avant la validation définitive de la commande.</span></li></ul><ul id="110044d6-4810-462e-b6bc-a5f8b94b4d21" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">38 La nature et les caractéristiques quantifiables des produits et services sont indiquées</span></li></ul><ul id="7f8e8b2b-026d-4f77-a503-50b777037493" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">39 La période et les conditions de validité des offres spéciales et promotions sont
+indiquées.</span></li></ul><ul id="32ea90a5-f325-44db-88da-5762fefa7a67" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">40 Le sous-total détaillé est indiqué avant la validation définitive de la commande.</span></li></ul><ul id="45d15000-f746-429c-8e6c-9bb68671cee9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">41 Les conditions de financement sont indiquées.</span></li></ul><ul id="7262a244-b5e7-4fa1-8a99-eff54ce862cc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">42 Les conditions de fonctionnement du service après-vente sont indiquées.</span></li></ul><ul id="1bf16c4a-3425-4840-a245-0701c75be4bd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">43 Les conditions de débit ou d&#x27;encaissement sont indiquées</span></li></ul><ul id="bf1c4422-7cf1-494d-b66c-fef1de9aa009" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">44 Les conditions de garantie sont indiquées.</span></li></ul><ul id="74a352ec-1e07-4585-94dc-7d403aa89f94" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">45 Les conditions de vente ou d&#x27;utilisation sont disponibles depuis toutes les pages.</span></li></ul><ul id="382e22a2-fe60-4574-a951-78095e57679f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">46 Les informations relatives à la zone de livraison des produits ou de réalisation des
+services sont indiquées.</span></li></ul><ul id="6b0e17d8-d71a-417e-bb5c-e3f252f3f769" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">47 Les moyens de paiement acceptés et les procédures correspondantes sont indiqués.</span></li></ul><ul id="e998a271-3051-4c02-94bd-b9598cff3fe1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">48 L&#x27;identité des prestataires impliqués dans les transactions est précisée</span></li></ul><ul id="3d83581b-2c9d-4385-8760-d1400fcac0c2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">49 Les recours en cas de litige sont indiqués dans les conditions générales de vente ou
+d&#x27;utilisation.</span></li></ul><ul id="35e8aab6-24f5-409a-8b16-8901c66d3674" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">50 L&#x27;adresse et les conditions de retour des produits sont indiquées.</span></li></ul><ul id="2f7fbe9d-8328-4483-9a3f-cf065650ec2e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">51 La charge des frais de retour est indiquée avant la validation définitive de la commande</span></li></ul><ul id="5c4e419b-0503-4aad-bfd5-a09d4bce1782" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">52 Le mode de dépôt et la procédure de traitement des réclamations sont indiqués.</span></li></ul><ul id="577f1ba1-6532-40d0-875d-e2fbff7fa279" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">53 Les conditions de remboursement sont indiquées.</span></li></ul><ul id="9c8d4591-5fea-41a8-81d6-3439ee02678d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">54 Les matériels et logiciels nécessaires au fonctionnement du service sont indiqués avant
+la validation de la commande.</span></li></ul><ul id="a023ce40-c4c6-440f-ad9d-d2380ae8e64a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">55 Les prix affichés mentionnent le détail des taxes et suppléments éventuels ainsi que le
+montant hors taxes.</span></li></ul><ul id="56574fa3-9aa0-4d80-81f1-8471b304982e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">56 Une adresse de livraison différente de l&#x27;adresse de facturation peut être spécifiée.</span></li></ul><ul id="a5d072f3-c7c5-4165-a08a-38fbcdc2e064" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">57 Le site accepte au moins deux moyens de paiement.</span></li></ul><ul id="f331c1d1-c5d7-415c-9a1c-5be9ddec8b44" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">58 Les données bancaires ne sont mémorisées qu&#x27;après consentement explicite de
+l&#x27;utilisateur.</span></li></ul><ul id="3c4308e2-dfef-4bd5-8bbe-5c3471cf0d0a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">59 Les données bancaires mémorisées par le site peuvent être modifiées ou supprimées</span></li></ul><ul id="11a57c0c-feef-4574-aa3e-e93cbcedd312" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">60 La référence de la transaction est affichée au client après la validation de sa commande.</span></li></ul><ul id="2884ef16-417a-4885-871f-8f9e73dd1e0a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">61 Les factures émises sont également disponibles en ligne</span></li></ul><ul id="ece73391-43fd-4e29-9cf3-982efb04a632" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">62 Chaque facturation fait l&#x27;objet d&#x27;un mail de confirmation</span></li></ul><ul id="e7b77bc0-6914-4230-8580-6e9e7184d9c2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">63 Les mentions d&#x27;appartenance à un ordre ou groupe professionnel, d&#x27;un label ou d&#x27;une
+récompense sont accompagnées d&#x27;un lien vers la source.</span></li></ul><ul id="4255bb39-ec3a-4b20-b24a-d8e20117a946" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">64 Les produits indisponibles font l&#x27;objet d&#x27;une différenciation visuelle et textuelle</span></li></ul><ul id="427dbb62-64b1-451c-bd86-e279f0d819c8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">65 Un mail indiquant la référence de la transaction et les données de la commande est
+envoyé suite à la validation.</span></li></ul><ul id="4f995f33-a1a8-498f-9461-c45435899f57" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">66 Chaque réclamation fait l&#x27;objet d&#x27;un accusé de réception</span><h1 id="fa45edf7-20d1-45ab-9a8a-edb98289e23a" class="">4. Formulaires</h1><ul id="d3983b10-a2ab-4c58-ae4b-d5fb4aa676d1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">67 Chaque champ de formulaire est associé dans le code source à une étiquette qui lui est
+propre.</span></li></ul><ul id="18387476-22b6-4210-a29c-af079cb15f7c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">68 Les informations complétant l&#x27;étiquette d&#x27;un champ sont associées à celui-ci dans le
+code-source</span></li></ul><ul id="b006f40f-3876-4568-8f1f-86c0877a8355" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">69 L&#x27;étiquette de chaque champ de formulaire indique si la saisie est obligatoire.</span></li></ul><ul id="ad3cb987-94eb-4d52-92b0-100ad8584b0a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">70 L&#x27;étiquette de chaque champ de formulaire indique, le cas échéant, quel format de saisie
+doit être respecté.</span></li></ul><ul id="b89c8850-e9c9-4ce1-b95a-32567a4d460f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">71 L&#x27;utilisateur est averti lorsqu&#x27;une saisie est sensible à la casse.</span></li></ul><ul id="bd92eaf9-bbcd-44b2-bc29-018ab94ea978" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">72 L&#x27;étiquette de chaque champ de formulaire qui le nécessite indique les limites de
+nombre de caractères</span></li></ul><ul id="3ee79bd3-96d8-491c-9238-ad8f6885563d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">73 La création d&#x27;un mot de passe par l&#x27;utilisateur fait l&#x27;objet d&#x27;un mécanisme de prévention
+des erreurs de saisie.</span></li></ul><ul id="b0fccd56-15df-4608-951f-ddb2703b749d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">74 Les caractères saisis dans un champ de mot de passe peuvent être affichés en clair.</span></li></ul><ul id="95c12477-dbb5-4818-a9fa-fc2dafbc8271" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">75 Chaque étiquette de formulaire est visuellement rattachée au champ qu&#x27;elle décrit.</span></li></ul><ul id="c6e53b55-8976-461d-87ea-eb11cc225acf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">76 Les informations contextuelles se rapportant à un champ de formulaire lui sont
+visuellement rattachées</span></li></ul><ul id="b42a975e-dda7-4fee-b937-6f78e62d218e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">77 En cas de rejet des données saisies dans un formulaire, les champs contenant les données
+rejetées sont indiqués à l&#x27;utilisateur.</span></li></ul><ul id="7bf6d70d-9666-43fc-8771-cf1f6daf0d18" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">78 En cas de rejet des données saisies dans un formulaire, les raisons du rejet sont indiquées
+à l&#x27;utilisateur.</span></li></ul><ul id="8bc407c6-2d2b-49f0-a615-b93611760b65" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">79 En cas de rejet des données saisies dans un formulaire, toutes les données saisies
+peuvent être modifiées par l&#x27;utilisateur.</span></li></ul><ul id="0702d772-b2a2-4967-8e94-d4550bcc4041" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">80 Les messages d&#x27;erreur personnalisés sont exprimés dans la langue du formulaire</span></li></ul><ul id="398831d4-f7f6-4629-ad08-1235e11c8aaa" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">81 Lors de la saisie d&#x27;un formulaire réparti sur plusieurs pages, un récapitulatif global est
+affiché avant l&#x27;envoi définitif.</span></li></ul><ul id="f788501b-ac77-4527-bb72-f6d8edfacd61" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">82 La page affichée après l&#x27;envoi d&#x27;un formulaire permet de reprendre directement la
+navigation.</span></li></ul><ul id="cd3388d5-462d-4b2d-9c4e-218f1a5a7500" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">83 La soumission d&#x27;un formulaire est suivie d&#x27;un message indiquant la réussite ou non de
+l&#x27;action souhaitée.</span></li></ul><ul id="e9cb22ed-a4cc-491a-a94d-e9592b065989" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">84 L&#x27;utilisateur est averti au début d&#x27;un processus complexe de la nature des données et
+documents exigées</span></li></ul><ul id="38d9e279-53bf-4ea2-8709-12a0cc6333b6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">85 Les processus complexes sont accompagnés de la liste de leurs étapes</span></li></ul><ul id="7c5927b6-79af-4565-ab58-9300f4a3b18e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">86 L&#x27;étape en cours d&#x27;un processus complexe est indiquée.</span></li></ul><ul id="b1af6a17-e21d-4542-88d4-380aff86ecfb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">87 Chaque étape d&#x27;un processus complexe permet de revenir à l&#x27;étape précédente.</span></li></ul><ul id="a1bb0a08-33a0-40c5-a79a-665b5d6b57f0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">88 L&#x27;utilisateur est averti de la perte d&#x27;information en cas d&#x27;utilisation de l&#x27;historique de son
+navigateur dans un processus complexe.</span></li></ul><ul id="d8d349fa-fbc2-41aa-85a8-a745b445702f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">89 La navigation dans un processus complexe ne provoque pas la perte des données
+précédemment soumises.</span></li></ul><ul id="9fa506b5-b845-41b8-8810-b2cc186955d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">90 Le copier coller est possible dans les champs de formulaire.</span></li></ul><ul id="d77cddd3-178a-41f4-bfe7-9d49856c7b92" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">92 Les listes d&#x27;options de formulaires sont présentées dans un ordre identifiable.</span></li></ul><ul id="b0a64db1-04a6-439d-a5cc-406622659135" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">93 Les champs de saisie de type mail, URL, téléphone, nombre, recherche, mots de passe,
+heure et date sont dotés du type approprié.</span></li></ul><h1 id="626ba258-ff3c-4320-8deb-f8a1df44b350" class="">5. Identification et contact</h1><ul id="8f49353e-1668-4271-b9f5-fd2030f8087a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">94 La page d&#x27;accueil expose la nature des contenus et services proposés.</span></li></ul><ul id="ec774641-1590-422a-a03d-b4734c1154e6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">95 Si le site est réservé ou destiné à un public spécifique, ce public est mentionné au
+moins sur la page d&#x27;accueil.</span></li></ul><ul id="430ea83a-4bdc-45f9-b66c-66d4d7395316" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">96 L&#x27;identité de l&#x27;auteur, de la société ou de l&#x27;organisation est indiquée</span></li></ul><ul id="28f65b7f-183d-4398-9a6b-df7693d1d41d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">97 Le titre de chaque page permet d&#x27;identifier le site</span></li></ul><ul id="f8cc78e3-5fcf-4875-b499-ede10f8c07d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">98 Le titre de chaque page permet d&#x27;identifier son contenu</span></li></ul><ul id="79b37c57-0ec0-4b22-8874-1909106df04c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">99 Le code source des pages contient un appel valide à une icône de favori.</span></li></ul><ul id="a9d36b67-6808-45a5-937c-1603408d8d91" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">100 L&#x27;adresse complète et le numéro de téléphone des sociétés et organisations sont
+disponibles depuis toutes les pages du site.</span></li></ul><ul id="374c1174-a83f-440a-805d-fa73c0a20865" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">101 Le numéro d&#x27;immatriculation délivré aux sociétés ou organisations au terme des
+procédures légales d&#x27;enregistrement en vigueur dans leur pays est indiqué.</span></li></ul><ul id="ca307ff1-256a-43e0-bd67-70e22796947a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">102 Le site propose au moins deux moyens de contact</span></li></ul><ul id="7552e209-cb8f-49b8-8b7a-f07920085870" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">103 Les délais de réponse aux demandes d&#x27;information sont indiqués.</span></li></ul><ul id="726df91b-afab-4d08-9cd6-1414cefd4470" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">104 Les horaires et tarifs de fonctionnement des services mis à la disposition des
+utilisateurs sont indiqués</span></li></ul><ul id="8f9c3f76-3e2b-424b-b00d-47c5ea2d611d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">105 Chaque demande d&#x27;information fait l&#x27;objet d&#x27;un accusé de réception.</span></li></ul><ul id="2dedcc1b-0407-4d9c-9dbe-3ba00ac08e2d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">106 Tous les mails fournissent au moins un moyen de contact</span></li></ul><ul id="2b5ddab7-6067-458f-a1b8-48112eeb3452" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">107 Le site propose au moins un moyen de contacter le responsable des réclamations.</span></li></ul><ul id="058a0c83-905c-406e-a5e2-107af01899e4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">108 Le site propose au moins un moyen de contacter le modérateur des espaces publics.</span></li></ul><ul id="446a895e-c27e-44d6-a048-25702a1dcbee" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">109 L&#x27;identité de la personne ou du service responsable des contenus est indiquée.</span></li></ul><ul id="fad7c838-f313-4742-9a92-8f0919c5e7a5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">110 Si le site déclare respecter un ou plusieurs standards ou référentiels, un lien est
+proposé vers chacun d&#x27;entre eux.</span></li></ul></li></ul><h1 id="7b48e4ce-df03-4b2a-9b93-bdd98fa5adf3" class="">6. Images et médias</h1><ul id="ab0a60e9-eefc-4495-9309-2fb7f114e58c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">111 Chaque image décorative est dotée d&#x27;une alternative textuelle appropriée</span></li></ul><ul id="148c8d06-e4c8-4fb6-9397-e5ac79f9d8cd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">112 Chaque image-lien est dotée d&#x27;une alternative textuelle appropriée.</span></li></ul><ul id="64ded40b-9f1f-4367-a1b4-fbeb27cf37dd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">113 Chaque image porteuse d&#x27;information est dotée d&#x27;une alternative textuelle
+appropriée.</span></li></ul><ul id="3527fd9e-402f-4d54-a1ee-f215e2328ed7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">114 Les vignettes et aperçus ne sont pas des images de taille supérieure redimensionnées
+côté client.</span></li></ul><ul id="c0cc6f0d-275c-4fd0-abe4-a6b04615b4e6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">115 Les objets inclus sont dotés d&#x27;une alternative textuelle appropriée.</span></li></ul><ul id="0f0ff2b6-d8dc-42d6-9c10-2af1a0e637bd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">116 Chaque contenu audio et vidéo est accompagné de sa transcription textuelle.</span></li></ul><ul id="60c0a1f0-abdb-4682-b195-827ee5e5b7fb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">117 Les vidéos comportent des sous-titres synchronisés</span></li></ul><ul id="4a2675ed-5270-409f-8b95-6fcadf0f9390" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">118 La durée des contenus vidéo ou audio est indiquée.</span></li></ul><ul id="86daf4fc-be5e-4a8c-b2ed-92637394729f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">119 Les vidéos sont déclenchées par l&#x27;utilisateur.</span></li></ul><ul id="39b27616-3050-489b-9e52-32a0797da98d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">120 Les sons sont déclenchés par l&#x27;utilisateur.</span></li></ul><ul id="b4075670-4704-44f6-b418-e21d903f40e7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">121 Les animations, sons et clignotements peuvent être mis en pause.</span></li></ul><ul id="db205238-bbfa-4219-98ec-786e96b1cbda" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">122 Le déroulement des animations ne bloque pas la navigation ou l&#x27;accès aux contenus</span></li></ul><h1 id="8889c1ea-7b8a-488a-ab1b-8cad3bd7550f" class="">7. Internationalisation</h1><ul id="b6c14393-e688-41fb-b664-5f821dabb576" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">123 L&#x27;indicatif international est disponible pour tous les numéros de téléphone.</span></li></ul><ul id="cc260e8f-0567-4314-b713-206718a6ed89" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">124 Le pays est précisé pour toutes les adresses postales.</span></li></ul><ul id="bbcb0a53-530e-4c42-bbf0-6d904860576b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">125 Le code source de chaque page indique la langue principale du contenu.</span></li></ul><ul id="48488a22-887d-4f4d-b6aa-fdd95a2f2616" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">126 La langue principale de la page cible d&#x27;un lien est identifiable lorsqu&#x27;elle diffère de
+celle de la page d&#x27;origine.</span></li></ul><ul id="37438c56-564a-4197-8c34-424b838d4472" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">127 Chaque changement de langue est signalé.</span></li></ul><ul id="5b6ffdae-3155-4851-877c-6cc4a22fa58c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">128 Les liens d&#x27;accès aux versions traduites pointent directement vers la traduction de
+la page courante.</span></li></ul><ul id="2d38e1eb-048d-462a-a897-a4142fd2ce1d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">129 Les liens vers les versions équivalentes de la page ou du site sont rédigés dans leur
+langue cible.</span></li></ul><ul id="0f8c4340-108d-4f04-8a00-5cac9955e037" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">130 Le serveur respecte l&#x27;ordre préférentiel de langues des outils de consultation.</span></li></ul><h1 id="eab7fc56-6b37-4cb0-9a7c-310c84ee8715" class="">8. Liens</h1><ul id="25c536a6-3188-465c-9379-569ca0d07b23" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">131 Chaque lien est doté d&#x27;un intitulé dans le code source.</span></li></ul><ul id="b93f584e-dea7-4f9f-90c4-d4d225156e42" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">132 Le libellé de chaque lien décrit sa fonction ou la nature du contenu vers lequel il
+pointe.</span></li></ul><ul id="431c4e3e-6a62-4554-9434-12f545515a98" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">133 Les liens de même nature ont des couleurs, des formes et des comportements
+identiques sur toutes les pages.</span></li></ul><ul id="e6e66940-355f-44d6-bf7b-62354a7ba745" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">134 Le soulignement est réservé aux liens.</span></li></ul><ul id="bbc1dc92-6b1e-4f84-ad92-a434f0b8fce3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">135 Les liens sont visuellement différenciés du reste du contenu.</span></li></ul><ul id="730139e7-58fb-4ac5-84f6-9e347d53c993" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">136 Le site n&#x27;applique pas le même style aux liens visités et non visités.</span></li></ul><ul id="b6ebcf4b-5821-40c1-bc23-535616b788b4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">137 Les liens internes et externes sont différenciés.</span></li></ul><ul id="f05803f2-21ec-4603-a9cb-df6e218c7361" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">138 Les liens internes vers les contenus à accès limité sont différenciés</span></li></ul><ul id="3a301676-01bd-4014-a362-33fc4a279c25" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">139 Les liens provoquant l&#x27;ouverture d&#x27;un logiciel externe ont un libellé explicite.</span></li></ul><ul id="7a71bc40-ddd2-46a5-9053-6d8d923b7f56" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">140 Les numéros de téléphone sont activables via le protocole approprié.</span></li></ul><ul id="b9fdeea2-3b48-48b7-a9c5-ddd79fd1584c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">141 L&#x27;utilisateur est averti des ouvertures de nouvelles fenêtres.</span></li></ul><ul id="fad4a240-9cfb-4e23-a315-ff3daa2bde6c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">142 Le format des fichiers proposés en téléchargement est indiqué.</span></li></ul><ul id="3d2b7135-18e7-4546-95fd-0e6f378514e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">143 La taille des fichiers internes proposés en téléchargement est indiquée.</span></li></ul><ul id="c698e7ca-8494-4992-b308-4edef0daf428" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">144 La langue des fichiers en téléchargement est précisée lorsqu&#x27;elle diffère de celle
+de la page d&#x27;origine.</span></li></ul><ul id="061acc40-15ef-4cef-9fa8-aedd702af9b5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">145 Le nommage des fichiers internes proposés en téléchargement permet d&#x27;en
+identifier le contenu et la provenance</span></li></ul><ul id="69cebbbc-240d-4866-a0a1-a15a71ad282e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">146 Le site n&#x27;impose pas d&#x27;interdiction ou de restriction à la mise en place des liens
+entrants.</span></li></ul><ul id="9c776e8c-f913-41b1-8eb0-999b7ad5e94c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">147 Tous les liens internes du site sont valides.</span></li></ul><h1 id="811c9b35-c9ea-4df6-8f26-d8683dcb8787" class="">9.Navigation</h1><ul id="68c81670-994b-460a-a225-f7da506a48ae" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">148 Si le site n&#x27;est pas réservé à un public spécifique, l&#x27;accès aux contenus est immédiat.</span></li></ul><ul id="94d7b34a-7b18-446f-9fff-07a9227aad87" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">149 La navigation sur le site ne provoque pas l&#x27;ouverture de popups.</span></li></ul><ul id="1e14b6a7-b34b-4f30-803c-910f5ac916ad" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">150 Il est possible de revenir à la page d&#x27;accueil depuis toutes les pages.</span></li></ul><ul id="34373200-7035-42d4-93a7-d2cb91af1051" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">151 Chaque page affiche une information permettant de connaître son emplacement dans
+l&#x27;arborescence du site.</span></li></ul><ul id="075b2fd7-2380-480a-a58b-5d1fdae1bb15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">152 Les items actifs de menu sont signalés</span></li></ul><ul id="24b4d315-ab3b-499a-b027-91aecf3c0592" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">153 Les blocs de navigation de même nature sont affichés aux mêmes emplacements sur
+toutes les pages.</span></li></ul><ul id="34b37d12-464c-4e43-bafe-eb668b10b969" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">154 Les icônes de navigation sont accompagnées d&#x27;une légende explicite.</span></li></ul><ul id="284166d0-12b1-4359-ad1e-5c9fd62008a3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">155 Les mécanismes de fermeture de fenêtres sont visuellement rattachées à leur contenu.</span></li></ul><ul id="356f6b1d-a064-41a0-a3c7-9f30b2276ede" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">156 Les mécanismes de fermetures de fenêtres sont immédiatement disponibles.</span></li></ul><ul id="077e1ef0-c0d1-4530-b302-5a9d861c042a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">157 Les nouvelles fenêtres dimensionnées et les fenêtres modales sont dotées d&#x27;un bouton
+de fermeture explicite.</span></li></ul><ul id="7297ba7c-3104-43a1-823d-f7f281a20363" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">158 Les mécanismes de fermetures de fenêtres sont affichés aux mêmes emplacements sur
+toutes les pages.</span></li></ul><ul id="c2245ea2-7fc0-47c0-a9ac-041a00e9959c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">159 Chaque page contient des liens d&#x27;accès rapide placés au début du code source.</span></li></ul><ul id="951d34e6-da6b-491c-8e56-6db205067622" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">160 Le focus clavier n&#x27;est ni supprimé ni masqué.</span></li></ul><ul id="3dc2db9f-5337-4f9c-bc6e-f79b1a9cfb2c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">161 Le site est intégralement utilisable au clavier.</span></li></ul><ul id="87706852-fbe6-4076-ab2f-92d9b2959b12" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">162 La navigation au clavier s&#x27;effectue dans un ordre prévisible.</span></li></ul><ul id="ace2f2f7-0759-4e88-8825-9d0c8a4a7729" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">163 Le site propose un moteur de recherche interne.</span></li></ul><ul id="6d4b2cc3-fbd7-46ca-a081-302fdd21d542" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">164 Chaque page de résultats de recherche peut être atteint via une adresse Web.</span></li></ul><ul id="de397ce9-a684-40a4-90c4-5dad474c0a02" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">165 Il est possible de relancer une recherche depuis sa page de résultats</span></li></ul><ul id="77b983cb-3703-4830-addd-43b3c5c24985" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">166 Un plan du site est disponible depuis chaque page.</span></li></ul><ul id="3cd9e3eb-59da-4227-853f-edf104d6bdc4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">167 Les limites de temps imposées à une action ou un accès sont indiquées</span></li></ul><h1 id="3c3d51f2-3efd-4219-9b1c-d49e06b6b6fc" class="">10. Newsletter</h1><ul id="747ac331-0cda-4bf5-b124-aeed56f12143" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">168 L&#x27;inscription aux newsletters est soumise à un processus de confirmation.</span></li></ul><ul id="62766cc9-0d75-48d2-aa28-cc60c19d8d7d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">169 Un lien de désinscription est présent dans chaque newsletter.</span></li></ul><ul id="66c1015c-86b7-4ca3-8aff-6d01d8123e9f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">170 La désinscription depuis une newsletter ne demande pas de confirmation par courriel.</span></li></ul><ul id="c29ccb79-6a05-4651-859a-c1999ad7ad1e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">171 La désinscription aux newsletters est possible depuis le site.</span></li></ul><ul id="218e8f64-0656-44c4-885e-9105ff1af420" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">172 La dernière newsletter envoyée est disponible en ligne.</span></li></ul><ul id="c2401637-57ad-4eb8-b65a-4e1be10c87e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">173 Les archives de newsletters sont disponibles en ligne.</span></li></ul><ul id="9056903c-8738-4489-ad39-8b217a01484e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">174 La fréquence d&#x27;envoi des newsletters est consultable avant l&#x27;abonnement.</span></li></ul><h1 id="0cef0a92-8c08-4b63-b0c7-c54b6b3e435a" class="">10. Newsletter</h1><ul id="d1703b39-e165-43c9-9f52-b46be0db5a59" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">175 La charte graphique est cohérente sur l&#x27;ensemble du site.</span></li></ul><ul id="f5b6a3f4-7499-4505-b400-e5a569c10750" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">176 L&#x27;information n&#x27;est pas véhiculée uniquement par la couleur.</span></li></ul><ul id="ff28d627-160a-438c-b4bb-d2f79da2e7e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">177 Les contenus sont présentés avec un contraste suffisant par rapport à leur arrière-plan.</span></li></ul><ul id="3adf2c36-1fbe-4b41-b2a9-91796c287e5e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">178 Le contenu et le sens de chaque page ne sont pas altérés lorsque les styles sont
+désactivés.</span></li></ul><ul id="afa00bcd-d70a-4aae-a455-f6bc103b9660" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">179 Un contenu n&#x27;est pas désigné uniquement par sa forme ou par sa position à l&#x27;écran.</span></li></ul><ul id="59580cce-344c-447a-b5f0-bdb45d464dc6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">180 Un contenu qui doit être restitué dans un lecteur d&#x27;écran ne lui est pas dissimulé.</span></li></ul><ul id="37def162-a90a-477f-8692-baa22ee68bf0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">181 La taille des éléments cliquables est suffisante.</span></li></ul><ul id="fd04986a-fbe7-4964-8c22-9eebd3549096" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">182 Les textes pouvant être mis en forme via des styles ne sont pas remplacés par des
+images.</span></li></ul><ul id="1daecd4e-b7cb-4945-a8d7-6fafbd7dbdb3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">183 Les contenus générés via les styles sont dotés d&#x27;une alternative appropriée.</span></li></ul><ul id="656ac351-3a3c-4dba-8a3a-11c87d87e30c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">184 Les pictogrammes typographiques sont dotés d&#x27;une alternative appropriée.</span></li></ul><ul id="c2204fa1-ad80-43e5-97c3-467b554a60e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">185 Une famille générique de police est indiquée comme dernier élément de substitution.</span></li></ul><ul id="dd823f53-6587-4770-a6c1-57a0ea7fd1c4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">186 Les styles ne justifient pas le texte.</span></li></ul><ul id="db2d8000-1152-4c1e-b1ad-1bbd93482221" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">187 Les mises en majuscules à des fins décoratives sont effectuées à l&#x27;aide des styles</span></li></ul><ul id="86e2a874-b9ef-47b1-90e6-1f25592a9fd7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">188 Le site ne bloque pas les fonctionnalités de zoom du navigateur.</span></li></ul><ul id="45c2be99-ba42-42bc-9830-2ed6195e1186" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">189 Le site propose un ou plusieurs mécanismes dédiés à l&#x27;adaptation aux terminaux
+mobiles.</span></li></ul><ul id="7742f926-76b5-4afe-97be-0bdbead9d579" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">190 Le site propose des styles dédiés à l&#x27;impression.</span></li></ul><ul id="f5d5ef73-2cd7-443c-9957-d0feffcf1f99" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">191 Le contenu de chaque page est disponible à l&#x27;impression sans blocs de navigation.</span></li></ul><h1 id="1f138ab9-6c9b-4d0e-862d-16e9f38aa3d0" class="">12. Sécurité</h1><ul id="53fdcbd8-868c-4a9b-8bd8-c4968059ceda" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">192 Toutes les pages utilisent le protocole HTTPS.</span></li></ul><ul id="dc20d2e8-9048-42fb-ab66-6b6d6ee707ee" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">193 Les certificats de sécurité sont signés et en cours de validité.</span></li></ul><ul id="23874806-0bc1-4487-ad18-a27c652a63c7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">194 Les pages utilisant HTTPS ont un en-tête de transport strict.</span></li></ul><ul id="87f2f10f-66ad-4022-84e7-1ca461ae1cce" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">195 Les pages utilisant le protocole HTTPS ne proposent pas de ressources HTTP</span></li></ul><ul id="eb6fbc4e-1b1d-427c-83c7-023c23b2401e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">196 Les opérations relatives aux mots de passe peuvent être effectuées intégralement en
+ligne</span></li></ul><ul id="72d05825-b3fd-4a0e-9cb4-7866fd925e4a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">197 Les mots de passe peuvent être choisis ou changés par l&#x27;utilisateur.</span></li></ul><ul id="06344a68-73b8-466f-95ef-63125979b9b2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">198 Un dispositif sensibilise l&#x27;utilisateur sur le degré de sécurisation du mot de passe qu&#x27;il
+choisit</span></li></ul><ul id="b64a19ed-55bd-4676-90f1-d12daf516dd7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">199 Le site propose une procédure de réinitialisation du mot de passe.</span></li></ul><ul id="c41669d9-2516-44a2-bc5e-5a4250e55043" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">200 Le site ne communique pas de mot de passe par mail</span></li></ul><ul id="8409015e-702d-41e5-b76a-2c4eda7b3b16" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">201 Les en-têtes envoyés par le serveur désactivent la détection automatique du type
+MIME de chaque ressource.</span></li></ul><ul id="db272018-8bd4-4a40-81b7-1b5b8bb61f63" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">202 Le serveur indique le type MIME de chaque ressource.</span></li></ul><ul id="5545f728-e56a-4e57-a9c5-e9f800f0c5b3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">203 Les informations sur la sécurité des transactions sont indiquées.</span></li></ul><ul id="b6068a75-ccb2-4bed-bf0a-6a50d005f739" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">204 Le serveur n&#x27;envoie pas la liste des fichiers des répertoires n&#x27;ayant pas de page d&#x27;index.</span></li></ul><ul id="f77fe367-4bb5-4a71-b4ff-45530cdd9193" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">205 Le serveur envoie les informations d&#x27;activation de protection cross site scripting.</span></li></ul><ul id="e45c5127-af07-41d2-95bc-fb9738afa727" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">206 Le serveur envoie les informations indiquant les domaines autorisés à intégrer ses
+pages dans des cadres.</span></li></ul><ul id="5ea4af5a-9c8e-4bd2-a1ae-14196540c5ac" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">207 Le site propose un mécanisme de sécurité permettant de restreindre l&#x27;origine des
+contenus.208 Le serveur ne communique pas d&#x27;informations sur les logiciels et langages utilisés</span></li></ul><ul id="075cf80a-7aef-4b99-8187-a515982c00ed" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">209 Le contrôle d&#x27;intégrité des ressources tierces est présent et valide</span></li></ul><ul id="25b20d86-6993-461e-9c8d-9d38d19e80a2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">210 Le site propose au moins deux mécanismes pour valider une opération sécurisée</span></li></ul><h1 id="11f35242-e364-4513-bfef-4bee68ca44fa" class="">13. Serveur et performances</h1><ul id="c53981ec-7ca1-47fa-9065-24dd8157e8fb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">211 L&#x27;adresse du site fonctionne avec et sans préfixe www.</span></li></ul><ul id="97039b45-2916-4f9c-976f-81a37d9712c5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">212 La racine du site contient des instructions pour les robots d&#x27;indexation.</span></li></ul><ul id="f0d2e3f1-106e-4568-a677-63c21a3c8424" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">213 Le site propose un fichier sitemap indiquant les contenus à explorer.</span></li></ul><ul id="f16096b9-e13d-4406-9aec-4f8d00417abc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">214 Le serveur ne force pas la redirection vers la version ou l&#x27;application mobile.</span></li></ul><ul id="e9768808-ef19-40b3-b188-79c1da875fa5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">215 Le serveur envoie un code HTTP 404 pour les ressources non trouvées.</span></li></ul><ul id="f4343011-46f0-4da5-b8f8-7dab40744a1b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">216 Le serveur envoie une page d&#x27;erreur 404 personnalisée.</span></li></ul><ul id="73c86d7d-7c03-474f-8b41-9e2afc3208f8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">217 Le serveur envoie une page d&#x27;interdiction 403 personnalisée.</span></li></ul><ul id="1f172fa4-22bf-4dd5-b69e-80a910f679de" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">218 Le menu principal de navigation figure sur les pages d&#x27;erreur personnalisées.</span></li></ul><ul id="2c914de5-97ff-40a3-b823-21d91ce22e49" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">219 Le serveur transmet des contenus compressés aux clients qui les acceptent.</span></li></ul><ul id="1c855fbf-5555-4853-bd71-d4b9c526bda3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">220 Le serveur envoie les informations permettant la mise en cache des contenus.</span></li></ul><ul id="89611e00-cb33-43fb-894b-2c8ec5e8d825" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">221 Les en-têtes envoyés par le serveur contiennent les informations relatives au jeu de
+caractères employé.</span></li></ul><ul id="8caa75e0-fa22-43dd-b480-893d970cf609" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">222 Les feuilles de style du site sont minifiées.</span></li></ul><ul id="f5b81c8d-107a-4ff2-959f-a7e935e7b492" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">223 Les scripts du site sont minifiés.</span></li></ul><h1 id="89baa5f3-5290-4e9f-a653-a3083c372297" class="">14. Structure et code</h1><ul id="c28faf02-77b0-46e1-86ac-ed2e7af1df5f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">224 La date de publication ou de mise à jour des contenus est mise à disposition sous forme
+programmatique</span></li></ul><ul id="72d0f995-1f92-4af2-b28c-fc63aa9acbb8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">225 Le code source de chaque page contient une métadonnée qui définit le jeu de
+caractères.</span></li></ul><ul id="b23c5fdb-cede-4ef7-91d6-3876aa90a9bf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">226 Le codage de caractères utilisé est UTF-8.</span></li></ul><ul id="e0af4be5-4299-4fba-afdf-e5115f58bbfd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">227 Le contenu de chaque page est organisé selon une structure de titres et sous-titres
+hiérarchisée.</span></li></ul><ul id="ee6547e8-6c68-49c9-9d12-2b84588bb247" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">228 Les éléments visuellement présentés sous forme de liste sont balisés de façon
+appropriée dans le code source.</span></li></ul><ul id="430f237d-1e49-4160-b4d7-46f372f8a921" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">229 Chaque identifiant HTML n&#x27;est utilisé qu&#x27;une seule fois par page.</span></li></ul><ul id="5d78b8bc-ce15-4e7c-b5ba-aeb0cfc93be7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">230 Le site ne bloque pas la copie de contenu</span></li></ul><ul id="e1b3d3b8-1f59-4c43-ab59-52decb356a3c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">231 Le site ne bloque pas l&#x27;accès au menu contextuel</span></li></ul><ul id="75d375d2-08a3-4616-b768-33097d37b517" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">232 Le site n&#x27;impose pas de redirection ou de rafraîchissement automatique côté client.</span></li></ul><ul id="08666f02-2a58-4298-bd70-50daa4a3c0b8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">233 Le texte des documents PDF internes est sélectionnable.</span></li></ul><ul id="72346b83-8ec4-477d-b324-974e64edbf5c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">234 Les documents PDF internes sont dotés d&#x27;une structure de titres.</span></li></ul><ul id="97928233-9a5c-4e43-ba76-65e4da4aed69" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">235 Les fils de syndication sont détectables par les agents utilisateurs.</span></li></ul><ul id="db893d5a-751e-4f0a-b40f-67cf9f21233a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">236 Les cellules des tableaux de données sont reliées à leurs en-têtes.</span></li></ul><ul id="ca3fdabd-d53f-452a-8924-e69c3da10a40" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">237 Les titres des tableaux de données sont renseignés.</span></li></ul><ul id="c0f0e2b7-3896-4772-aa53-cd2d6e3c0089" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">238 La linéarisation des tableaux utilisés pour la mise en page ne nuit pas à la
+compréhension des contenus.</span></li></ul><ul id="87ab66fc-6281-4ae6-8524-5caa4240e1ca" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">239 Les tableaux de données ne sont pas remplacés par des images.</span></li></ul><ul id="df54804b-66e6-4cdb-9659-8b89b97b6d07" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">240 Les tableaux de données ne sont pas simulés à l&#x27;aide de texte mis en forme.</span></li></ul></div></article></body></html>
