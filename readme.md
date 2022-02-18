@@ -261,7 +261,7 @@ toutes les pages.
 - [ ]  173 Les archives de newsletters sont disponibles en ligne.
 - [ ]  174 La fréquence d'envoi des newsletters est consultable avant l'abonnement.
 
-# 10. Newsletter
+# 11. Présentation
 
 - [ ]  175 La charte graphique est cohérente sur l'ensemble du site.
 - [ ]  176 L'information n'est pas véhiculée uniquement par la couleur.
